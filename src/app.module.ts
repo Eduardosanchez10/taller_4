@@ -1,17 +1,23 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ProductsModule } from './products/products.module';
 import { CategoriesModule } from './categories/categories.module';
 import { SuppliersModule } from './suppliers/suppliers.module';
-import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSourceConfig } from './common/config/data.source';
-import { WarehousesModule } from './warehouses/warehouses.module';
 import { StocksModule } from './stocks/stocks.module';
+import { WarehousesModule } from './warehouses/warehouses.module';
 import { AuthModule } from './auth/auth.module';
-import { PurchaseModule } from './purchase/purchase.module';
-import { PaymentModule } from './payment/payment.module';
+import { CustomersModule } from './customers/customers.module';
+import { PurchasesModule } from './purchases/purchases.module';
+import { PaymentMethodsModule } from './payment-methods/payment-methods.module';
+import { ShipperModule } from './shipper/shipper.module';
+import { EmployeeModule } from './employee/employee.module';
+import { OrderModule } from './order/order.module';
+import { OrderDetailModule } from './order-detail/order-detail.module';
+import { OrderDetailsModule } from './order-details/order-details.module';
 
 @Module({
   imports: [ 
@@ -23,12 +29,7 @@ import { PaymentModule } from './payment/payment.module';
     ProductsModule, 
     CategoriesModule, 
     SuppliersModule, 
-    UsersModule,
-     WarehousesModule,
-      StocksModule,
-            AuthModule,
-            PurchaseModule,
-            PaymentModule,
+    UsersModule, StocksModule, WarehousesModule, AuthModule, CustomersModule, PurchasesModule, PaymentMethodsModule, ShipperModule, EmployeeModule, OrderModule, OrderDetailModule, OrderDetailsModule,
   ],
   controllers: [],
   providers: [],

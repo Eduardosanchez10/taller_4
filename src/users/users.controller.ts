@@ -20,7 +20,7 @@ export class UsersController {
 
   @Get(':id')
   findOne(@Param('id',ParseUUIDPipe) id: string) {
-    return this.usersService.findOneByEmail(id);
+    return this.usersService.findOne(id);
   }
 
   @Patch(':id')

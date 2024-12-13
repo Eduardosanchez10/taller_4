@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Patch, Post, Query
 import { SuppliersService } from './suppliers.service';
 import { CreateSupplierDto } from "./dto/create-supplier.dto";
 import { UpdateSupplierDto } from "./dto/update-supplier.dto";
-import { PaginationDto } from "src/common/dtos/pagination/pagination.dto";
+import { PaginationDto } from "./../common/dtos/pagination/pagination.dto";
 
 @Controller('suppliers')
 export class SuppliersController {
@@ -34,3 +34,7 @@ export class SuppliersController {
         return this.suppliersService.remove(id);
     }
 }
+
+
+
+

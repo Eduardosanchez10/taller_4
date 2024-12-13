@@ -18,17 +18,13 @@ export class CreateProductDto {
     @IsNumber()
     @IsOptional()
     @Min(0)
-    stock?: number = 0;
-
-    @IsArray()
-    @IsOptional()
-    photo?: string[];
-
+    unit?: number = 0;
 
     @IsString()
     @IsNotEmpty()
-    category:string
+    category: string;
+
     @IsString()
     @IsNotEmpty()
-    supplier:string
+    supplier: string;
 }

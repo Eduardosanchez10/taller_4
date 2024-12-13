@@ -1,6 +1,6 @@
 import { StockEntity } from "../entities/stock.entity";
 
-export interface ResponseAllStocks {
+export interface ResponseAllStocks{
     page: number;
     lastPage: number;
     limit: number;

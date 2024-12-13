@@ -1,12 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseUUIDPipe } from '@nestjs/common';
 import { WarehousesService } from './warehouses.service';
 import { CreateWarehouseDto } from './dto/create-warehouse.dto';
 import { UpdateWarehouseDto } from './dto/update-warehouse.dto';
-import { PaginationDto } from 'src/common/dtos/pagination/pagination.dto';
+import { PaginationDto } from './../common/dtos/pagination/pagination.dto';
 
 @Controller('warehouses')
 export class WarehousesController {
-  constructor(private readonly warehousesService: WarehousesService) { }
+  constructor(private readonly warehousesService: WarehousesService) {}
 
   @Post()
   create(@Body() createWarehouseDto: CreateWarehouseDto) {
@@ -14,7 +14,7 @@ export class WarehousesController {
   }
 
   @Get()
-  findAll(@Query() paginationDto: PaginationDto) {
+  findAll( @Query() paginationDto: PaginationDto ) {
     return this.warehousesService.findAll(paginationDto);
   }
 

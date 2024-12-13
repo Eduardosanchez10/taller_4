@@ -8,9 +8,7 @@ import { StockEntity } from './entities/stock.entity';
   controllers: [StocksController],
   providers: [StocksService],
   imports: [
-    TypeOrmModule.forFeature([
-      StockEntity
-    ])
-  ]
+    TypeOrmModule.forFeature([StockEntity]),
+  ],
 })
 export class StocksModule {}

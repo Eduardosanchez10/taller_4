@@ -1,12 +1,12 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, Min } from "class-validator";
 
 export class CreateStockDto {
-
     @IsNumber()
     @IsNotEmpty()
-    quantity: number
-
+    @Min(0)
+    quantity: number;
+    
     @IsString()
-    @IsOptional()
-    description: string
+    @IsNotEmpty()
+    product: string;
 }

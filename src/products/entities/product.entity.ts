@@ -1,29 +1,38 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany } from "typeorm";
 import { BaseEntity } from "./../../common/config/base.entity";
-import { SupplierEntity } from "../../suppliers/entities/supplier.entity";
-import { CategoryEntity } from "../../categories/entities/category.entity";
-import { StockEntity } from "../../stocks/entities/stock.entity";
+import { SupplierEntity } from "./../../suppliers/entities/supplier.entity";
+import { CategoryEntity } from "./../../categories/entities/category.entity";
+import { StockEntity } from "./../../stocks/entities/stock.entity";
+import { DetailsEntity } from "../../order-details/entities/order-detail.entity";
 
 @Entity('product')
-export class ProductEntity extends BaseEntity{
-
-    @Column({type: "varchar"})
+export class ProductEntity extends BaseEntity {
+    @Column({type: 'varchar'})
     name: string;
 
-    @Column({type: "varchar", nullable: true})
+    @Column({type: 'varchar', nullable: true})
     description?: string;
 
-    @Column({type: "float", default: 0 })
-    price?: number;
+    @Column({type: 'float', default: 0})
+    price?: number = 0;
 
-    @ManyToOne(() => CategoryEntity, (category) => category.product)
-    @JoinColumn({name: "category_id"})
-    category: string;
+    @Column({type: 'int', default: 0})
+    unit?: number = 0;
 
-    @ManyToOne(() => SupplierEntity, (supplier) => supplier.product)
-    @JoinColumn({name: "supplier_id"})
+    @ManyToOne(()=> SupplierEntity, (supplier)=>supplier.products)
+    @JoinColumn({name:'supplier_id'})
     supplier: string;
 
-    @OneToMany(() => StockEntity, (stock) => stock.products)
+    @ManyToOne(()=> CategoryEntity, (category)=>category.products)
+    @JoinColumn({name:'category_id'})
+    category: string;
+
+    @OneToMany(()=>StockEntity, (stocks)=>stocks.product)
     stocks: StockEntity[];
+
+    @OneToMany(()=> DetailsEntity, (details) => details.product)
+    @JoinColumn({name:'orderDetails_id'})
+    details:string
+
+
 }
